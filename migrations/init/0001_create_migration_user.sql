@@ -1,0 +1,10 @@
+CREATE USER admin_user WITH PASSWORD 'postgres' CREATEDB CREATEROLE;
+
+GRANT ALL PRIVILEGES ON DATABASE "postgres" TO admin_user;
+
+ALTER ROLE admin_user IN DATABASE "postgres" SET search_path TO public;
+
+GRANT USAGE, CREATE ON SCHEMA public TO admin_user;
+
+GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO admin_user;
+GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO admin_user;
